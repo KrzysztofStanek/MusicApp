@@ -1,12 +1,15 @@
 package com.example.stud.musicapp.topsongs;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.stud.musicapp.R;
+import com.example.stud.musicapp.SongDetailsActivity;
 import com.example.stud.musicapp.api.TrendingSingle;
 
 import java.util.List;
@@ -36,6 +39,14 @@ public class TopSongsAdapter extends RecyclerView.Adapter<TopSongsAdapter.TopSon
         holder.tvTrack.setText(single.strTrack);
         holder.tvArtist.setText(single.strArtist);
         holder.tvAlbum.setText(single.strAlbum);
+
+        holder. llContainer .setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), SongDetailsActivity. class );
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     public int getItemCount(){
@@ -51,9 +62,12 @@ public class TopSongsAdapter extends RecyclerView.Adapter<TopSongsAdapter.TopSon
         TextView tvTrack;
         TextView tvArtist;
         TextView tvAlbum;
+        LinearLayout llContainer;
         public TopSongsViewHolder(View itemView) {
 
             super(itemView);
+
+            llContainer = itemView.findViewById(R.id. llContainer );
 
             tvPlace = itemView.findViewById(R.id.tvPlace);
             tvTrack = itemView.findViewById(R.id.tvTrack);
