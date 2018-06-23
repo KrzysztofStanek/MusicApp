@@ -43,10 +43,18 @@ public class TopSongsAdapter extends RecyclerView.Adapter<TopSongsAdapter.TopSon
         holder. llContainer .setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+               /* Intent intent = new Intent(v.getContext(), SongDetailsActivity. class );
+                v.getContext().startActivity(intent);*/
+
                 Intent intent = new Intent(v.getContext(), SongDetailsActivity. class );
+                intent.putExtra(SongDetailsActivity. TRACK , TrendingSingle.strTrack);
+                intent.putExtra(SongDetailsActivity. ARTIST , TrendingSingle.strArtist );
+                intent.putExtra(SongDetailsActivity. TRACK_ID , TrendingSingle.idTrack );
                 v.getContext().startActivity(intent);
             }
         });
+
+
     }
 
     public int getItemCount(){
